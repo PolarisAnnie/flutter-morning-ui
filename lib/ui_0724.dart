@@ -9,6 +9,7 @@ class Home0724 extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 50),
         child: Column(
           children: [
+            // 기기 사이즈에 호환되게 높이 조정하는 방법
             SizedBox(height: MediaQuery.sizeOf(context).height * 0.4),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
