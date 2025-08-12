@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_morning_ui/ui_0805.dart';
+import 'package:flutter_morning_ui/ui_0806.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Home0805(),
+      home: Home0806(),
     );
   }
 }
