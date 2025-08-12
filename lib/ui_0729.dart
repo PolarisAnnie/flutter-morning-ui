@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 class Home0729 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // 어떤 날짜를 입력하더라도 해당 날짜가 속해있는 달력 출력
+    DateTime date = DateTime(2025, 07, 01);
+    
     return Scaffold(
       appBar: AppBar(title: Text('달력')),
       body: Padding(
