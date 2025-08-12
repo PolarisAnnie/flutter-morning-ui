@@ -94,7 +94,39 @@ class Home0806 extends StatelessWidget {
                   },
                 ),
               ),
-              Expanded(child: Container()),
+              Expanded(
+                child: Container(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        children: [
+                          TimelineIndex(isSelected: false),
+                          SizedBox(height: 10),
+                          Container(
+                            height: 50,
+                            width: 2,
+                            decoration: BoxDecoration(color: Colors.blue),
+                          ),
+                          SizedBox(height: 10),
+                          TimelineIndex(isSelected: false),
+
+                          SizedBox(height: 10),
+                          Container(
+                            height: 50,
+                            width: 2,
+                            decoration: BoxDecoration(color: Colors.blue),
+                          ),
+                          SizedBox(height: 10),
+                          TimelineIndex(isSelected: true),
+                        ],
+                      ),
+
+                      TaskBox('Wakeup','2:00 AM', 'Ear'),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -128,12 +160,110 @@ class Home0806 extends StatelessWidget {
               color: isToday ? Colors.blue : Colors.grey,
             ),
           ),
-          Container(
-            height: 5,
-            width: 5,
-          )
+          Container(height: 5, width: 5),
         ],
       ),
     );
+  }
+}
+
+class TaskBox extends StatelessWidget {
+  const TaskBox({
+    super.key,
+    required this.title,
+    required this.time,
+    required this.desc,
+  });
+
+  final String title;
+  final String time;
+  final String desc;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20),
+      child: Container(
+        width: 290,
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                  ),
+                  Spacer(),
+                  Text(
+                    time,
+                    style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                  ),
+                ],
+              ),
+              SizedBox(height: 8),
+              Text(
+                desc,
+                style: TextStyle(color: Colors.grey[600], fontSize: 12),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class TimelineIndex extends StatelessWidget {
+  const TimelineIndex({super.key, required this.isActive});
+  final bool isActive;
+
+  @override
+  Widget build(BuildContext context) {
+    return isActive
+        ? Row(
+          children: [
+            Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    height: 15,
+                    width: 15,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.blue, width: 2),
+                      color: Colors.blue,
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 25,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.blue, width: 2),
+                      //color: Colors.blue,
+                    ),
+                  ),
+                ],
+              ),
+              TaskBox(title: title, time: time, desc: desc)
+          ],
+        )
+        : Container(
+            height: 15,
+            width: 15,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.blue, width: 2),
+              //color: Colors.blue,
+            ),
+          );
   }
 }
